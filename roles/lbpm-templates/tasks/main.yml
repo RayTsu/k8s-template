@@ -1,0 +1,40 @@
+# 传输模板文件到指定k8s-master
+
+- name: prepare some dirs
+  file: name=/app/dev state=directory
+  when: namespace == "dev"
+
+- name: prepare some dirs
+  file: name=/app/sit state=directory
+  when: namespace == "sit"
+
+- name: prepare some dirs
+  file: name=/app/prod state=directory
+  when: namespace == "prod"
+
+- name: copy deployment and service yaml to dest server
+  template: src={{item.src}} dest={{item.dest}}
+            mode=0644 owner=root
+  with_items:
+    - {src: 'env-config-cm.yaml', dest: '{{dev_dest}}'}
+    - {src: 'lbpm-portal-deployment.yaml', dest: '{{dev_dest}}'}
+    - {src: 'lbpm-portal-svc.yaml', dest: '{{dev_dest}}'}
+  when: namespace == "dev"
+
+- name: copy deployment and service yaml to dest server
+  template: src={{item.src}} dest={{item.dest}}
+            mode=0644 owner=root
+  with_items:
+    - {src: 'env-config-cm.yaml', dest: '{{sit_dest}}'}
+    - {src: 'lbpm-portal-deployment.yaml', dest: '{{sit_dest}}'}
+    - {src: 'lbpm-portal-svc.yaml', dest: '{{sit_dest}}'}
+  when: namespace == "sit"
+
+- name: copy deployment and service yaml to dest server
+  template: src={{item.src}} dest={{item.dest}}
+            mode=0644 owner=root
+  with_items:
+    - {src: 'env-config-cm.yaml', dest: '{{prod_dest}}'}
+    - {src: 'lbpm-portal-deployment.yaml', dest: '{{prod_dest}}'}
+    - {src: 'lbpm-portal-svc.yaml', dest: '{{prod_dest}}'}
+  when: namespace == "prod"

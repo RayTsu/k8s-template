@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{svc_name}}
+  namespace: {{namespace}}
+spec:
+  clusterIP: {{cluster_ip}}
+  ports:
+  - name: {{port_svc_name}}
+    nodePort: {{node_port}}
+    port: {{svc_port}}
+    protocol: TCP
+    targetPort: {{target_port}}
+  selector:
+    app: {{app_name}}
+  type: NodePort

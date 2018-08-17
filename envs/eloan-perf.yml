@@ -1,0 +1,22 @@
+#deployment变量定义
+meta_name: eloan-perf
+namespace: performance
+app_name: eloan-perf
+image: eloan-performance
+version: 2.1.0
+container_name: eloan-perf
+port_name: eloan-perf
+logs_name: eloan-portal-performance-log
+node_key: eloan
+node_value: eloan-perf
+logs_path: /app/logs/eloan-portal-performance
+signaturesFile_path: /volume1/eloan-performance-signaturesFile
+upload_path: /volume1/eloan-attachment-performance/upload
+reportUpload_path: /volume1/eloan-attachment-performance/reportUpload
+invitationQrCodeUpload_path: /volume1/eloan-attachment-performance/invitationQrCodeUpload
+volume_server_sigfile: 192.168.3.64
+volume_server: 192.168.3.64
+#service变量定义
+svc_name: eloan-svc
+port_svc_name: eloan-svc
+node_port: 31123

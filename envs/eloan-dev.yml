@@ -1,0 +1,18 @@
+#deployment变量定义
+meta_name: eloan-dev
+namespace: dev
+app_name: eloan-dev
+image: eloan-dev
+version: 2.1.0
+container_name: eloan-dev
+port_name: eloan-dev
+logs_name: eloan-portal-log
+node_key: eloan
+node_value: eloan-dev
+logs_path: /app/logs/eloan-portal
+signaturesFile_path: /volume1/testdatafile/signaturesFile/eloan
+upload_path: /volume1/eloan-attachment-dev/upload
+reportUpload_path: /volume1/eloan-attachment-dev/reportUpload
+invitationQrCodeUpload_path: /volume1/eloan-attachment-dev/invitationQrCodeUpload
+volume_server_sigfile: 192.168.3.34
+volume_server: 192.168.3.64

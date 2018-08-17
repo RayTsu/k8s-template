@@ -1,0 +1,10 @@
+#deployment默认变量值
+meta_name: lbpm-portal
+container_name: lbpm-portal
+port_name: web
+#service默认变量值
+svc_name: lbpm-portal-service
+namespace: dev
+svc_port: 80
+target_port: 8080
+app_name: lbpm-portal-dev

@@ -1,0 +1,7 @@
+#deployment变量定义
+meta_name: redis-dev
+namespace: dev
+app_name: redis-dev
+image: redis-dev
+version: T2
+container_name: redis

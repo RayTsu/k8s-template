@@ -1,0 +1,14 @@
+#deployment变量定义
+meta_name: redis-prod
+namespace: prod
+app_name: redis-prod
+image: redis-prod
+version: redis-encryption
+container_name: redis
+#service变量定义
+svc_name: redis-prod
+port_svc_name: redis
+node_port: 31009
+svc_port: 6379
+target_port: 6379
+cluster_ip: 10.68.32.15

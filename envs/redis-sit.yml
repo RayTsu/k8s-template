@@ -1,0 +1,14 @@
+#deployment变量定义
+meta_name: redis-sit
+namespace: sit
+app_name: redis-sit
+image: redis-encryption
+version: latest
+container_name: redis
+#service变量定义
+svc_name: redis-svc
+port_svc_name: redis
+node_port: 31123
+svc_port: 6379
+target_port: 6379
+cluster_ip: 10.254.22.15

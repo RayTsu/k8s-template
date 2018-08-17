@@ -1,0 +1,18 @@
+#deployment变量定义
+meta_name: eloan-dev-refactor
+namespace: dev
+app_name: eloan-dev-refactor
+image: eloan-dev-refactor
+version: 2.1.0
+container_name: eloan-dev-refactor
+port_name: eloan-dev-refactor
+logs_name: eloan-portal-refactor-log
+node_key: app
+node_value: eloan-dev-refactor
+logs_path: /app/logs/eloan-portal-refactor
+pageUpload_path: /volume1/eloan-attachment-dev/pageUpload
+volume_server: 192.168.3.64
+#service变量定义
+svc_name: eloan-svc-refactor
+port_svc_name: eloan-svc-refactor
+node_port: 32112

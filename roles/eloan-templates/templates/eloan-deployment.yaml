@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{meta_name}}
+  namespace: {{namespace}}
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: {{app_name}}
+    spec:
+      containers:
+      - image: 192.168.11.53:8082/{{image}}:{{version}}
+        imagePullPolicy: IfNotPresent
+        name: {{container_name}}
+        ports:
+        - containerPort: 8080
+          hostPort: 8899
+          name: {{port_name}}
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /usr/local/tomcat/logs
+          name: {{logs_name}}
+        - mountPath: /mfbmsDataFile/signaturesFile/eloan
+          name: eloan-signatures
+        - mountPath: /home/tomcat/upload
+          name: eloan-upload
+        - mountPath: /home/tomcat/reportUpload
+          name: eloan-reportupload
+        - mountPath: /home/tomcat/invitationQrCodeUpload
+          name: eloan-invitationqrcodeupload
+      restartPolicy: Always
+      nodeSelector:
+        {{node_key}}: {{node_value}}
+      volumes:
+      - hostPath:
+          path: {{logs_path}}
+        name: {{logs_name}}
+      - name: eloan-signatures
+        nfs:
+          path: {{signaturesFile_path}}
+          server: {{volume_server_sigfile}}
+      - name: eloan-upload
+        nfs:
+          path: {{upload_path}}
+          server: {{volume_server}}
+      - name: eloan-reportupload
+        nfs:
+          path: {{reportUpload_path}}
+          server: {{volume_server}}
+      - name: eloan-invitationqrcodeupload
+        nfs:
+          path: {{invitationQrCodeUpload_path}}
+          server: {{volume_server}}

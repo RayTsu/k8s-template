@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{meta_name}}
+  namespace: {{namespace}}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{app_name}}
+    spec:
+      containers:
+      - image: 192.168.11.53:8082/{{image}}:{{version}}
+        imagePullPolicy: Always
+        name: {{container_name}}
+        ports:
+        - containerPort: 6379
+          hostPort: 6379
+          protocol: TCP
+      restartPolicy: Always

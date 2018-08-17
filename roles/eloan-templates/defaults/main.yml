@@ -1,0 +1,7 @@
+svc_name: eloan-svc
+namespace: dev
+port_svc_name: eloan-svc
+node_port: 31112
+svc_port: 80
+target_port: 8080
+app_name: eloan-dev

@@ -1,0 +1,18 @@
+#deployment变量定义
+namespace: prod
+app_name: lbpm-portal-prod
+image: lbpm-portal-business-img
+version: T27
+logs_name: lbpm-portal-log-prod
+logs_path: /app/logs/lbpm-portal-prod
+env_name: lbpm-cm-prod
+node_key: lbpm
+node_value: lbpm-prod
+attachment_name: lbpm-portal-attachment
+attachment_path: /volume1/lbpm-portal/PROD/attachment
+volume_server: 192.168.3.64
+env: PRO
+#service变量定义
+svc_name: lbpm-portal-service
+svc_port: 80
+target_port: 8080

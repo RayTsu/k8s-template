@@ -1,0 +1,12 @@
+#deployment变量定义
+image: lbpm-portal-business-img
+version: T24
+logs_name: lbpm-portal-log-dev
+logs_path: /app/logs/lbpm-portal-dev
+env_name: lbpm-cm-dev
+node_key: lbpm
+node_value: lbpm-dev
+attachment_name: lbpm-portal-attachment
+attachment_path: /volume1/lbpm-portal/DEV/attachment
+volume_server: 192.168.3.64
+env: DEV

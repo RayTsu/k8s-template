@@ -1,0 +1,22 @@
+#deployment变量定义
+meta_name: eloan-prod
+namespace: prod
+app_name: eloan-prod
+image: eloan-prod
+version: 2.1.0
+container_name: eloan-prod
+port_name: eloan-prod
+logs_name: eloan-prod-log
+node_key: eloan
+node_value: eloan-prod
+logs_path: /app/logs/eloan-portal
+signaturesFile_path: /volume1/LuYin/signaturesFile/eloan
+upload_path: /volume1/eloan-attachment-prod/upload
+reportUpload_path: /volume1/eloan-attachment-prod/reportUpload
+invitationQrCodeUpload_path: /volume1/eloan-attachment-prod/invitationQrCodeUpload
+volume_server_sigfile: 192.168.3.34
+volume_server: 192.168.3.64
+#service变量定义
+svc_name: eloan-svc
+port_svc_name: eloan-svc
+node_port: 31112

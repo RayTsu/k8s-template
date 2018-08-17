@@ -1,0 +1,45 @@
+# 传输模板文件到指定k8s-master
+
+- name: prepare some dirs
+  file: name=/app/dev state=directory
+  when: namespace == "dev"
+
+- name: prepare some dirs
+  file: name=/app/perf state=directory
+  when: namespace == "performance"
+
+- name: prepare some dirs
+  file: name=/app/prod state=directory
+  when: namespace == "prod"
+
+- name: copy deployment and service yaml to dest server
+  template: src={{item.src}} dest={{item.dest}}
+            mode=0644 owner=root
+  with_items:
+    - {src: 'eloan-deployment.yaml', dest: '{{dev_dest}}'}
+    - {src: 'eloan-svc.yaml', dest: '{{dev_dest}}'}
+  when: namespace == "dev" and meta_name == "eloan-dev"
+
+- name: copy deployment and service yaml to dest server
+  template: src={{item.src}} dest={{item.dest}}
+            mode=0644 owner=root
+  with_items:
+    - {src: 'eloan-deployment.yaml', dest: '{{perf_dest}}'}
+    - {src: 'eloan-svc.yaml', dest: '{{perf_dest}}'}
+  when: namespace == "performance" and meta_name == "eloan-perf"
+
+- name: copy deployment and service yaml to dest server
+  template: src={{item.src}} dest={{item.dest}}
+            mode=0644 owner=root
+  with_items:
+    - {src: 'eloan-deployment.yaml', dest: '{{prod_dest}}'}
+    - {src: 'eloan-svc.yaml', dest: '{{prod_dest}}'}
+  when: namespace == "prod" and meta_name == "eloan-prod"
+
+- name: copy deployment and service yaml to dest server
+  template: src={{item.src}} dest={{item.dest}}
+            mode=0644 owner=root
+  with_items:
+    - {src: 'eloan-deployment-refactor.yaml', dest: '{{dev_dest}}'}
+    - {src: 'eloan-svc.yaml', dest: '{{dev_dest}}/eloan-svc-refactor.yaml'}
+  when: namespace == "dev" and meta_name == "eloan-dev-refactor"

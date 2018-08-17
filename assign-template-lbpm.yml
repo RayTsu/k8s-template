@@ -1,0 +1,5 @@
+- hosts: k8s-master
+  tags:
+  - assign
+  roles:
+  - lbpm-templates
